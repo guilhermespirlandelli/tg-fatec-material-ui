@@ -7,9 +7,11 @@ import {
   Grid,
   TextField,
   Typography,
+  Paper,
+  FormControl,
 } from "@mui/material";
-import Paper from "@mui/material/Paper";
-import FormControl from "@mui/material/FormControl";
+
+import { Close } from "@mui/icons-material";
 
 const Loginframe = styled.div`
   width: 100%;
@@ -24,6 +26,10 @@ const SpacingBottom = styled.div`
   padding-bottom: 20px;
 `;
 
+const CloseStyle = styled.div`
+  padding-left: 95%;
+`;
+
 export default function Home() {
   return (
     <>
@@ -33,38 +39,35 @@ export default function Home() {
             <Paper align="center" elevation={6}>
               <FormControl fullWidth></FormControl>
               <Container>
-                <Avatar
-                  alt="logo"
-                  src="/logo.png"
-                  sx={{ width: 100, height: 100 }}
-                />
-                <FormControl fullWidth></FormControl>
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <CloseStyle>
+                    <Close />
+                  </CloseStyle>
+                </Grid>
                 <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                   <Typography align="center" variant="h5">
-                    OLHOS DO BEM
+                    Você deseja doar ou receber doação?
                   </Typography>
                 </Grid>
                 <FormControl fullWidth></FormControl>
                 <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                   <Typography align="center" variant="subtitle1">
-                    FAÇA SEU CADASTRO AQUI
+                    Escolha uma opção abaixo
                   </Typography>
                 </Grid>
                 <FormControl fullWidth></FormControl>
                 <Grid container>
-                  <Grid item xs={12} sm={12} md={12} justifyContent="center">
-                    <SpacingBottom>
-                      <TextField label="Email" fullWidth></TextField>
-                    </SpacingBottom>
-                  </Grid>
                   <Grid container>
-                    <Grid item xs={12} sm={12} md={12} justifyContent="center">
+                    <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                       <SpacingBottom>
-                        <TextField
-                          label="Senha"
+                        <Button
+                          size="large"
+                          variant="contained"
                           fullWidth
-                          type="password"
-                        ></TextField>
+                          color="primary"
+                        >
+                          DOAR
+                        </Button>
                       </SpacingBottom>
                     </Grid>
                   </Grid>
@@ -76,23 +79,17 @@ export default function Home() {
                         fullWidth
                         color="primary"
                       >
-                        Login
+                        RECEBER DOAÇÃO
                       </Button>
                     </Grid>
                   </Grid>
                 </Grid>
               </Container>
               <FormControl fullWidth></FormControl>
-              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                <Typography align="center" variant="subtitle1">
-                  ESQUECI MINHA SENHA
-                </Typography>
-              </Grid>
-              <FormControl fullWidth></FormControl>
             </Paper>
           </Grid>
         </Grid>
-      </Loginframe>      
+      </Loginframe>
     </>
   );
 }
