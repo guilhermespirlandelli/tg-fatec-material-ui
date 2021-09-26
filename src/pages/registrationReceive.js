@@ -67,12 +67,12 @@ export default function registrationReceive() {
                   </Grid>
                   <Grid item xs={12} sm={12} md={12} justifyContent="center">
                     <SpacingBottom>
-                      <TextField label="Telefone" fullWidth></TextField>
+                      <TextField label="Endereço" fullWidth></TextField>
                     </SpacingBottom>
                   </Grid>
                   <Grid item xs={12} sm={12} md={12} justifyContent="center">
                     <SpacingBottom>
-                      <TextField label="Celular" fullWidth></TextField>
+                      <TextField label="Telefone" fullWidth></TextField>
                     </SpacingBottom>
                   </Grid>
                   <Grid container>
