@@ -1,11 +1,10 @@
 // import useStyles from 'react'
 import styled from "styled-components";
 import {
-  Avatar,
   Button,
   Container,
   Grid,
-  TextField,
+  Link,
   Typography,
   Paper,
   FormControl,
@@ -27,10 +26,11 @@ const SpacingBottom = styled.div`
 `;
 
 const CloseStyle = styled.div`
-  padding-left: 95%;
+  padding-left: 97%;
+  padding-bottom: 20px;
 `;
 
-export default function Home() {
+export default function registrationOptions() {
   return (
     <>
       <Loginframe>
@@ -41,7 +41,9 @@ export default function Home() {
               <Container>
                 <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                   <CloseStyle>
-                    <Close />
+                    <Link href="/authentication">
+                      <Close color="inherit" />
+                    </Link>
                   </CloseStyle>
                 </Grid>
                 <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
@@ -65,6 +67,7 @@ export default function Home() {
                           variant="contained"
                           fullWidth
                           color="primary"
+                          href="/registration"
                         >
                           DOAR
                         </Button>
@@ -73,14 +76,17 @@ export default function Home() {
                   </Grid>
                   <Grid container>
                     <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                      <Button
-                        size="large"
-                        variant="contained"
-                        fullWidth
-                        color="primary"
-                      >
-                        RECEBER DOAÇÃO
-                      </Button>
+                      <SpacingBottom>
+                        <Button
+                          size="large"
+                          variant="contained"
+                          fullWidth
+                          color="primary"
+                          href="/registrationReceive"
+                        >
+                          RECEBER DOAÇÃO
+                        </Button>
+                      </SpacingBottom>
                     </Grid>
                   </Grid>
                 </Grid>
