@@ -1,38 +1,55 @@
-import { Container } from '@mui/material'
+import { Container, FormControl } from '@mui/material'
 import styled from 'styled-components'
 import {
   Grid,
   Paper,
   TextField,
+  Button,
 } from "@mui/material";
+import PersistentDrawerLeft from '../components/navBar'
 
 const Title = styled.h1`
   font-size: 50px;
   color: ${({ theme }) => theme.colors.primary};
 `
 const SpacingArround = styled.div`
-  padding: 20px;  
-`
-const formInline = styled.div`
-  padding-right: 20px;
+  padding: 20px;
 `
 const SpacingBottom = styled.div`
-  padding-bottom: 20px;
+  
+`
+const SpacingArroundButton = styled.div`
+  padding: 20px;
+  justify-content: space-between;
+`
+const Loginframe = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
 `;
 
 export default function formReceive() {
   return (<>
-    <Container>
-      <Grid Container justifyContent="center">
-        <Grid item md={12}>
-          <SpacingArround>
+
+    <Loginframe>
+      <PersistentDrawerLeft />
+      <Container>
+        <FormControl />
+        <Grid Container justifyContent="center">
+          <Grid item xs={12} sm={12} md={12}>
+            <FormControl />
             <Paper elevation={6}>
               <Grid item md={12} align="center">
                 <Title>Cadastro de donatário</Title>
               </Grid>
               <Grid item md={12}>
                 <SpacingArround>
-                  <TextField label="Nome Completo" fullWidth></TextField>
+                  <TextField label="Nome Completo" fullWidth sx={{
+                    width: 1070,
+                  }}></TextField>
                 </SpacingArround>
               </Grid>
               <Grid item md={12}>
@@ -116,24 +133,53 @@ export default function formReceive() {
                   />
                 </SpacingArround>
               </Grid>
-              <Grid container>
+              <Grid container justifyContent="center">
                 <Grid item xs={12} sm={12} md={12}>
-                <SpacingArround>
+                  <SpacingArround>
                     <TextField
                       id="outlined-multiline-static"
                       label="Principais necessidades"
                       multiline
                       rows={4}
-
+                      sx={{
+                        width: 1070,
+                      }}
                       fullWidth
                     />
                   </SpacingArround>
                 </Grid>
+                <Grid item xs={12} sm={12} md={12} justifyContent="space-around">
+                  <SpacingArroundButton>
+                    <Button
+                      size="large"
+                      variant="contained"
+                      color="primary"
+                      sx={{
+                        width: 500,
+                      }}
+                    >
+                      SALVAR
+                    </Button>
+
+                    <Button
+                      size="large"
+                      variant="contained"
+                      color="primary"
+                      sx={{
+                        width: 500,
+                      }}
+                    >
+                      VOLTAR
+                    </Button>
+                    
+                  </SpacingArroundButton>
+                </Grid>
               </Grid>
             </Paper>
-          </SpacingArround>
+            <FormControl />
+          </Grid>
         </Grid>
-      </Grid>
-    </Container>
+      </Container>
+    </Loginframe>
   </>)
 }
