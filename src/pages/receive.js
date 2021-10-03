@@ -7,12 +7,20 @@ import {
   Button,
   Typography,
   InputAdornment,
+  Link,
 } from "@mui/material";
 import { Search } from "@mui/icons-material";
 import PersistentDrawerLeft from "../components/navBar";
 import TableContainer from "@mui/material/TableContainer";
 import Table from "@mui/material/Table";
-import { TableHead, TableRow, TableCell, TableFooter } from "@mui/material";
+import {
+  TableHead,
+  TableRow,
+  TableCell,
+  TableFooter,
+  TableBody,
+} from "@mui/material";
+import { resolveHref } from "next/dist/shared/lib/router/router";
 
 const Title = styled.h1`
   font-size: 50px;
@@ -21,7 +29,7 @@ const Title = styled.h1`
 const SpacingArround = styled.div`
   padding: 20px;
 `;
-const SpacingBottom = styled.div`  
+const SpacingBottom = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
@@ -30,7 +38,6 @@ const SpacingBottom = styled.div`
   text-align: center;
   padding-top: 110px;
   margin-left: -60px;
-  
 `;
 
 const SpacingArroundButton = styled.div`
@@ -44,6 +51,12 @@ const Loginframe = styled.div`
   align-items: center;
   text-align: center;
 `;
+
+const pessoas = {
+  nome: ["Guilherme", "Daniel"],
+  telefone: ["(16) 3722-1234", "(16) 3721-4321"],
+  id: [0, 1],
+};
 
 export default function receive() {
   return (
@@ -80,31 +93,49 @@ export default function receive() {
                             <TableCell align="center">Telefone</TableCell>
                           </TableRow>
                         </TableHead>
-                        {/* <TableBody>
-                      {.searchedEntrypointsmap(
-                        (element: '', index: '') => (
+                        <TableBody>
+                          
+                            <TableRow
+                              key={pessoas.id}
+                              hover
+                              onClick={() => {
+                                
+                                handleSelectedChips(index);
+                              }}
+                            >
+                              <TableCell>{pessoas.nome[0]}</TableCell>
+                              <TableCell align="center">
+                                <Typography variant="subtitle2">
+                                  {pessoas.telefone[0]}
+                                </Typography>
+                              </TableCell>
+                              {/* <TableCell align="center">
+                              <Typography variant="subtitle2">
+                                {pessoas.nome}
+                              </Typography>
+                            </TableCell> */}
+                            </TableRow>
+                          
                           <TableRow
-                            key={element.id}
+                            key={pessoas.id}
                             hover
                             onClick={() => {
-                              handleSelectedChips(index);
+                              handleSelectedChips();
                             }}
                           >
-                            <TableCell>{element.name}</TableCell>
+                            <TableCell>{pessoas.nome[1]}</TableCell>
                             <TableCell align="center">
                               <Typography variant="subtitle2">
-                                {element.method.name}
+                                {pessoas.telefone[1]}
                               </Typography>
                             </TableCell>
-                            <TableCell align="center">
+                            {/* <TableCell align="center">
                               <Typography variant="subtitle2">
-                                {element.actiontype.name}
+                                {pessoas.nome}
                               </Typography>
-                            </TableCell>
+                            </TableCell> */}
                           </TableRow>
-                        )
-                      )}
-                    </TableBody> */}
+                        </TableBody>
                         <TableFooter>
                           <TableRow>
                             {/* <TablePagination></TablePagination> */}

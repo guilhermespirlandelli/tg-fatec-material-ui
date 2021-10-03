@@ -1,185 +1,214 @@
-import { Container, FormControl } from '@mui/material'
-import styled from 'styled-components'
+import { useState } from "react";
+import { Container, FormControl, Select } from "@mui/material";
+import styled from "styled-components";
 import {
   Grid,
   Paper,
   TextField,
   Button,
+  Typography,
+  InputLabel,
+  MenuItem,
 } from "@mui/material";
-import PersistentDrawerLeft from '../components/navBar'
+import { ArrowBack, Check, Close } from "@mui/icons-material";
+import PersistentDrawerLeft from "../components/navBar";
 
 const Title = styled.h1`
   font-size: 50px;
   color: ${({ theme }) => theme.colors.primary};
-`
+`;
 const SpacingArround = styled.div`
-  padding: 20px;
-`
+  padding-bottom: 25px;
+`;
 const SpacingBottom = styled.div`
-  
-`
-const SpacingArroundButton = styled.div`
-  padding: 20px;
-  justify-content: space-between;
-`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  text-align: center;
+  padding-top: 110px;
+  margin-left: -60px;
+`;
+
+const Wrapper = styled.div`
+  margin: theme.spacing(1);
+  position: "relative";
+`;
 const Loginframe = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   text-align: center;
 `;
 
 export default function formReceive() {
-  return (<>
+  const [peopleNumber, setPeopleNumber] = useState("");
 
-    <Loginframe>
-      <PersistentDrawerLeft />
-      <Container>
-        <FormControl />
-        <Grid Container justifyContent="center">
-          <Grid item xs={12} sm={12} md={12}>
-            <FormControl />
-            <Paper elevation={6}>
-              <Grid item md={12} align="center">
-                <Title>Cadastro de donatário</Title>
-              </Grid>
-              <Grid item md={12}>
-                <SpacingArround>
-                  <TextField label="Nome Completo" fullWidth sx={{
-                    width: 1070,
-                  }}></TextField>
-                </SpacingArround>
-              </Grid>
-              <Grid item md={12}>
-                <SpacingArround>
-                  <TextField
-                    label="Telefone"
-                    sx={{
-                      width: 535,
-                    }}
-                  />
-                  <TextField
-                    label="Celular"
-                    sx={{
-                      width: 535,
-                    }}
-                  />
-                </SpacingArround>
-              </Grid>
-              <Grid item md={12}>
-                <SpacingArround>
-                  <TextField
-                    label="Rua"
-                    sx={{
-                      width: 535,
-                    }}
-                  />
-                  <TextField
-                    label="Número"
-                    sx={{
-                      width: 535,
-                    }}
-                  />
-                </SpacingArround>
-              </Grid>
-              <Grid item md={12}>
-                <SpacingArround>
-                  <TextField
-                    label="Bairro"
-                    sx={{
-                      width: 535,
-                    }}
-                  />
-                  <TextField
-                    label="Complemento"
-                    sx={{
-                      width: 535,
-                    }}
-                  />
-                </SpacingArround>
-              </Grid>
-              <Grid item md={12}>
-                <SpacingArround>
-                  <TextField
-                    label="Cidade"
-                    sx={{
-                      width: 535,
-                    }}
-                  />
-                  <TextField
-                    select
-                    label="Estado"
-                    sx={{
-                      width: 535,
-                    }}
-                  />
-                </SpacingArround>
-              </Grid>
-              <Grid item md={12}>
-                <SpacingArround>
-                  <TextField
-                    label="Número de Pessoas"
-                    sx={{
-                      width: 535,
-                    }}
-                  />
-                  <TextField
-                    label="Idade"
-                    sx={{
-                      width: 535,
-                    }}
-                  />
-                </SpacingArround>
-              </Grid>
-              <Grid container justifyContent="center">
-                <Grid item xs={12} sm={12} md={12}>
-                  <SpacingArround>
+  const handleChange = (event) => {
+    setPeopleNumber(event.target.value);
+  };
+
+  return (
+    <>
+      <Loginframe>
+        <PersistentDrawerLeft />
+        <SpacingBottom>
+          <Container>
+            <Paper>
+              <Container>
+                <Grid container spacing={5}>
+                  <Grid item md={12} xs={12} sm={12} xl={12}>
+                    <Typography variant="h4">Cadastro de Donatários</Typography>
+                  </Grid>
+
+                  <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                    <TextField label="Nome Completo" placeholder="TESTANDO" fullWidth />
+                  </Grid>
+
+                  <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+                    <TextField label="Telefone" fullWidth />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+                    <TextField label="Celular" fullWidth />
+                  </Grid>
+
+                  <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+                    <TextField label="Rua" fullWidth />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={2} lg={2} xl={2}>
+                    <TextField label="Número" fullWidth />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
+                    <TextField label="Complemento" fullWidth />
+                  </Grid>
+
+                  <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+                    <TextField label="Bairro" fullWidth />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+                    <TextField label="Cidade" fullWidth />
+                  </Grid>
+
+                  <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+                    <TextField label="Estado" fullWidth />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+                    <TextField label="CEP" fullWidth />
+                  </Grid>
+
+                  <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
+                    <FormControl fullWidth>
+                      <InputLabel id="demo-simple-select-autowidth-label">
+                        Número de pessoas
+                      </InputLabel>
+                      <Select
+                      
+                        labelId="demo-simple-select-autowidth-label"
+                        id="demo-simple-select-autowidth"
+                        value={peopleNumber}
+                        onChange={handleChange}
+                        autoWidth
+                        label="Age"
+                      >
+                        
+                        <MenuItem value=""></MenuItem>
+                        <MenuItem value={1} >1 (um)</MenuItem>
+                        <MenuItem value={2}>2 (dois)</MenuItem>
+                        <MenuItem value={3}>3 (três)</MenuItem>
+                        <MenuItem value={4}>4 (quatro)</MenuItem>
+                        <MenuItem value={5}>5 (cinco ou mais)</MenuItem>
+                        
+                      </Select>
+                    </FormControl>
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={6} lg={6} xl={6} />
+
+                  <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+                    <TextField label="Nome" fullWidth />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={3} lg={3} xl={3}>
+                    <TextField label="Idade" fullWidth />
+                  </Grid>
+
+                  <Grid item xs={12} sm={12} md={3} lg={3} xl={3}>
+                    <FormControl fullWidth>
+                      <InputLabel id="demo-simple-select-autowidth-label">
+                        Gênero
+                      </InputLabel>
+                      <Select
+                        alignContent="right"
+                        labelId="demo-simple-select-autowidth-label"
+                        id="demo-simple-select-autowidth"
+                        value={peopleNumber}
+                        onChange={handleChange}
+                        autoWidth
+                        label="Age"
+                      >
+                        <MenuItem value=""></MenuItem>
+                        <MenuItem value={6}>1 (um)</MenuItem>
+                        <MenuItem value={7}>2 (dois)</MenuItem>
+                        <MenuItem value={8}>3 (três)</MenuItem>
+                        <MenuItem value={9}>4 (quatro)</MenuItem>
+                        <MenuItem value={10}>5 (cinco ou mais)</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </Grid>
+
+                  <Grid item md={12} xs={12} sm={12} xl={12}>
                     <TextField
-                      id="outlined-multiline-static"
-                      label="Principais necessidades"
+                      fullWidth
                       multiline
                       rows={4}
-                      sx={{
-                        width: 1070,
-                      }}
-                      fullWidth
+                      label="Principais necessidades"
                     />
-                  </SpacingArround>
-                </Grid>
-                <Grid item xs={12} sm={12} md={12} justifyContent="space-around">
-                  <SpacingArroundButton>
-                    <Button
-                      size="large"
-                      variant="contained"
-                      color="primary"
-                      sx={{
-                        width: 500,
-                      }}
-                    >
-                      SALVAR
-                    </Button>
+                  </Grid>
 
-                    <Button
-                      size="large"
-                      variant="contained"
-                      color="primary"
-                      sx={{
-                        width: 500,
-                      }}
+                  <Grid item md={12} xs={12} sm={12} xl={12}>
+                    <Grid
+                      container
+                      spacing={5}
+                      justify="center"
+                      alignContent="center"
                     >
-                      VOLTAR
-                    </Button>
-                    
-                  </SpacingArroundButton>
+                      <Grid item xs={12} sm={12} md={3} mg={3} xl={3} />
+                      <Grid item xs={12} sm={12} md={3} mg={3} xl={3}>
+                        <Wrapper>
+                          <Button
+                            variant="contained"
+                            color="primary"
+                            endIcon={<ArrowBack />}
+                            fullWidth
+                            // onClick={backToJurisprudence}
+                          >
+                            Voltar
+                          </Button>
+                        </Wrapper>
+                      </Grid>
+                      <Grid item xs={12} sm={12} md={3} mg={3} xl={3}>
+                        <Wrapper>
+                          <Button
+                            variant="contained"
+                            color="primary"
+                            endIcon={<Check />}
+                            fullWidth
+                            // onClick={saveMessage}
+                          >
+                            Salvar
+                          </Button>
+                        </Wrapper>
+                      </Grid>
+                      <Grid item xs={12} sm={12} md={3} mg={3} xl={3} />
+                    </Grid>
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={12} mg={12} xl={12} />
                 </Grid>
-              </Grid>
+              </Container>
             </Paper>
-            <FormControl />
-          </Grid>
-        </Grid>
-      </Container>
-    </Loginframe>
-  </>)
+          </Container>
+        </SpacingBottom>
+      </Loginframe>
+    </>
+  );
 }
