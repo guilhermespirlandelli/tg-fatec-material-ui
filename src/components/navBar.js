@@ -15,7 +15,16 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { Assignment } from "@mui/icons-material";
+import {
+  Assignment,
+  PendingActions,
+  People,
+  Assessment,
+  ViewList,
+  AccountCircle,
+  Redeem,
+  Logout,
+} from "@mui/icons-material";
 import Link from "@mui/material";
 const drawerWidth = 240;
 
@@ -130,7 +139,10 @@ export default function PersistentDrawerLeft() {
         </List> */}
         <Divider />
         <List>
-          <a href="/formReceive" style={{textDecoration: "none", color: "black"}}>
+          <a
+            href="/formReceive"
+            style={{ textDecoration: "none", color: "black" }}
+          >
             <ListItem button key="Cadastro de Donatários">
               <ListItemIcon>
                 <Assignment />
@@ -138,42 +150,87 @@ export default function PersistentDrawerLeft() {
               <ListItemText primary="Cadastro de Donatários" />
             </ListItem>
           </a>
-          <a href="/receive" style={{textDecoration: "none", color: "black"}}>
+          <a href="/receive" style={{ textDecoration: "none", color: "black" }}>
             <ListItem button key="Donatários">
               <ListItemIcon>
-                <Assignment />
+                <ViewList />
               </ListItemIcon>
               <ListItemText primary="Donatários" />
             </ListItem>
           </a>
-          <a href="/receivePending" style={{textDecoration: "none", color: "black"}}>
+          <a
+            href="/receivePending"
+            style={{ textDecoration: "none", color: "black" }}
+          >
             <ListItem button key="Donatários Pendentes">
               <ListItemIcon>
-                <Assignment />
+                <PendingActions />
               </ListItemIcon>
               <ListItemText primary="Donatários Pendentes" />
             </ListItem>
           </a>
+          <a
+            href="/formAdmReport"
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <ListItem button key="Relatórios">
+              <ListItemIcon>
+                <Assessment />
+              </ListItemIcon>
+              <ListItemText primary="Relatórios" />
+            </ListItem>
+          </a>
         </List>
         <Divider />
-        {/* <List>
-          {["Cadastro de Donatários", "Donatários", "Donatários Pendentes"].map(
-            (text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>
-                  {index % 2 === 0 ? (
-                    <a href="/formReceive">
-                      <InboxIcon />
-                    </a>
-                  ) : (
-                    <MailIcon />
-                  )}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            )
-          )}
-        </List> */}
+        <List>
+          <a
+            href="/formEditProfile"
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <ListItem button key="Editar Perfil">
+              <ListItemIcon>
+                <AccountCircle />
+              </ListItemIcon>
+              <ListItemText primary="Editar Perfil" />
+            </ListItem>
+          </a>
+          <a
+            href="/formDonation"
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <ListItem button key="Fazer Doação">
+              <ListItemIcon>
+                <Redeem />
+              </ListItemIcon>
+              <ListItemText primary="Fazer Doação" />
+            </ListItem>
+          </a>
+          <a
+            href="/formReport"
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <ListItem button key="Minhas Doações">
+              <ListItemIcon>
+                <Assessment />
+              </ListItemIcon>
+              <ListItemText primary="Minhas Doações" />
+            </ListItem>
+          </a>
+        </List>
+        <Divider />
+        <List>
+          <a
+            href="/authentication"
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <ListItem button key="Sair">
+              <ListItemIcon>
+                <Logout />
+              </ListItemIcon>
+              <ListItemText primary="Sair" />
+            </ListItem>
+          </a>
+        </List>
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
