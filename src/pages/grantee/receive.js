@@ -10,7 +10,7 @@ import {
   Link,
 } from "@mui/material";
 import { Search } from "@mui/icons-material";
-import PersistentDrawerLeft from "../components/navBar";
+import PersistentDrawerLeft from "../../components/navBar";
 import TableContainer from "@mui/material/TableContainer";
 import Table from "@mui/material/Table";
 import {
@@ -20,7 +20,6 @@ import {
   TableFooter,
   TableBody,
 } from "@mui/material";
-import { DeleteForever } from "@mui/icons-material";
 import { resolveHref } from "next/dist/shared/lib/router/router";
 
 const Title = styled.h1`
@@ -60,7 +59,7 @@ const pessoas = {
   id: [0, 1],
 };
 
-export default function receivePending() {
+export default function receive() {
   return (
     <>
       <Loginframe>
@@ -71,7 +70,7 @@ export default function receivePending() {
               <Container>
                 <Grid container spacing={5}>
                   <Grid item md={12} xs={12} sm={12} xl={12}>
-                    <Typography variant="h4">Donatários Pendentes</Typography>
+                    <Typography variant="h4">Donatários</Typography>
                   </Grid>
                   <Grid item md={12} xs={12} sm={12} xl={12}>
                     <TextField
@@ -91,40 +90,40 @@ export default function receivePending() {
                       <Table>
                         <TableHead>
                           <TableRow>
-                            <TableCell>Nome</TableCell>
-                            <TableCell align="right">Telefone</TableCell>                            
-                            <TableCell align="center">Excluir</TableCell>
+                            <TableCell align="left">Nome</TableCell>
+                            <TableCell align="center">Celular</TableCell>
+                            <TableCell align="center">Telefone</TableCell>
+                            
                           </TableRow>
                         </TableHead>
                         <TableBody>
-
-                          <TableRow
-                            key={pessoas.id}
-                            hover
-                            onClick={() => {
-
-                              handleSelectedChips(index);
-                            }}
-                          >
-                            <TableCell>{pessoas.nome[0]}</TableCell>
-                            <TableCell align="right">
-                              <Typography variant="subtitle2">
-                                {pessoas.telefone[0]}
-                              </Typography>
-                            </TableCell>
-
-                            <TableCell align="center">
-                              <Link href="/#">
-                              <DeleteForever />
-                              </Link>
-                            </TableCell>
-                            {/* <TableCell align="center">
+                          
+                            <TableRow
+                              key={pessoas.id}
+                              hover
+                              onClick={() => {
+                                
+                                handleSelectedChips(index);
+                              }}
+                            >
+                              <TableCell align="left">{pessoas.nome[0]}</TableCell>
+                              <TableCell align="center">
+                                <Typography variant="subtitle2">
+                                  {pessoas.celular[0]}
+                                </Typography>
+                              </TableCell>
+                              <TableCell align="center">
+                                <Typography variant="subtitle2">
+                                  {pessoas.telefone[0]}
+                                </Typography>
+                              </TableCell>
+                              {/* <TableCell align="center">
                               <Typography variant="subtitle2">
                                 {pessoas.nome}
                               </Typography>
                             </TableCell> */}
-                          </TableRow>
-
+                            </TableRow>
+                          
                           <TableRow
                             key={pessoas.id}
                             hover
@@ -133,16 +132,15 @@ export default function receivePending() {
                             }}
                           >
                             <TableCell>{pessoas.nome[1]}</TableCell>
-                            <TableCell align="right">
+                            <TableCell align="center">
+                              <Typography variant="subtitle2">
+                                {pessoas.celular[1]}
+                              </Typography>
+                            </TableCell>
+                            <TableCell align="center">
                               <Typography variant="subtitle2">
                                 {pessoas.telefone[1]}
                               </Typography>
-                            </TableCell>
-
-                            <TableCell align="center">
-                              <Link href="#">
-                              <DeleteForever />
-                              </Link>
                             </TableCell>
                             {/* <TableCell align="center">
                               <Typography variant="subtitle2">

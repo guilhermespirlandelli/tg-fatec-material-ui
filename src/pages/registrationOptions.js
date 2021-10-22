@@ -67,7 +67,7 @@ export default function registrationOptions() {
                           variant="contained"
                           fullWidth
                           color="primary"
-                          href="/registration"
+                          href="/donor/donorRegistration"
                         >
                           DOAR
                         </Button>
@@ -82,7 +82,7 @@ export default function registrationOptions() {
                           variant="contained"
                           fullWidth
                           color="primary"
-                          href="/registrationReceive"
+                          href="/grantee/granteeTempRegistration"
                         >
                           RECEBER DOAÇÃO
                         </Button>

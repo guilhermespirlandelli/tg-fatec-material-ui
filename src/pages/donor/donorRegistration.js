@@ -1,16 +1,19 @@
 // import useStyles from 'react'
 import styled from "styled-components";
 import {
+  Link,
   Button,
   Container,
   Grid,
-  Link,
   TextField,
   Typography,
 } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import FormControl from "@mui/material/FormControl";
 import { Close } from "@mui/icons-material";
+import {mask, unMask} from 'remask'
+import {useState} from 'react'
+import axios from "axios";
 
 const Loginframe = styled.div`
   width: 100%;
@@ -30,7 +33,57 @@ const CloseStyle = styled.div`
   padding-bottom: 20px;
 `;
 
-export default function registrationReceive() {
+function donorRegistration() {
+  const [name, setName] = useState('')
+  const [cpf, setCpf] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmedPassword, setConfirmedPassword] = useState('')
+
+  const handleNameChange = event => {
+    setName(event.target.value)
+  }
+  const handleCpfChange = event => {
+    setCpf(mask(unMask(event.target.value),['999.999.999-99']))
+  }
+  const handleEmailChange = event => {
+    setEmail(event.target.value)
+  }
+  const handlePasswordChange = event => {
+    setPassword(event.target.value)
+  }
+  const handleConfirmedPasswordChange = event => {
+    setConfirmedPassword(event.target.value)
+  }
+
+  const createDonor = async() => {
+    if(name === '')
+      console.log("Por favor preencha seu nome.");
+    if(cpf === '')
+    console.log("Por favor preencha seu CPF.");
+    if(email === '')
+    console.log("Por favor preencha seu email.");
+    if(password === '')
+    console.log("Por favor preencha sua senha.");
+    if(confirmedPassword === '')
+    console.log("Por favor preencha confirme sua senha.");
+
+    if(password !== confirmedPassword){
+      console.log("As senhas não conferem. Por favor tente novamente.");
+    }else {
+      const donorToCreate = {
+        name,
+        cpf: unMask(cpf),
+        email,
+        password
+      }
+  
+      const response = await axios.post('/api/donor/createDonor', donorToCreate)
+
+      console.log(response.data.message);
+    }
+  }
+  
   return (
     <>
       <Loginframe>
@@ -62,30 +115,41 @@ export default function registrationReceive() {
                 <Grid container>
                   <Grid item xs={12} sm={12} md={12} justifyContent="center">
                     <SpacingBottom>
-                      <TextField label="Nome Completo" fullWidth></TextField>
+                      <TextField label="Nome Completo" fullWidth value={name} onChange={handleNameChange}></TextField>
                     </SpacingBottom>
                   </Grid>
                   <Grid item xs={12} sm={12} md={12} justifyContent="center">
                     <SpacingBottom>
-                      <TextField label="Endereço" fullWidth></TextField>
+                      <TextField label="CPF" fullWidth value={cpf} onChange={handleCpfChange}></TextField>
                     </SpacingBottom>
                   </Grid>
                   <Grid item xs={12} sm={12} md={12} justifyContent="center">
                     <SpacingBottom>
-                      <TextField label="Telefone" fullWidth></TextField>
+                      <TextField label="E-mail" fullWidth value={email} onChange={handleEmailChange}></TextField>
                     </SpacingBottom>
                   </Grid>
+
                   <Grid container>
-                    <Grid item xs={12} sm={12} md={12}>
+                    <Grid item xs={12} sm={12} md={12} justifyContent="center">
                       <SpacingBottom>
                         <TextField
-                          id="outlined-multiline-static"
-                          label="Fale um pouco sobre você"
-                          multiline
-                          rows={4}
-
+                          label="Senha"
                           fullWidth
-                        />
+                          type="password"
+                          value={password}
+                          onChange={handlePasswordChange}
+                        ></TextField>
+                      </SpacingBottom>
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={12} justifyContent="center">
+                      <SpacingBottom>
+                        <TextField
+                          label="Confirmar Senha"
+                          fullWidth
+                          type="password"
+                          value={confirmedPassword}
+                          onChange={handleConfirmedPasswordChange}
+                        ></TextField>
                       </SpacingBottom>
                     </Grid>
                   </Grid>
@@ -97,8 +161,7 @@ export default function registrationReceive() {
                           variant="contained"
                           fullWidth
                           color="primary"
-                          multiline
-                          maxRows={4}
+                          onClick={createDonor}
                         >
                           Cadastre-se
                         </Button>
@@ -115,3 +178,5 @@ export default function registrationReceive() {
     </>
   );
 }
+
+export default donorRegistration
