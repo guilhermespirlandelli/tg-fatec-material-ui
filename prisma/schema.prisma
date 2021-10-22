@@ -1,0 +1,81 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model OpenedGrantee {
+  @@map(name: "openedGrantee")
+  id Int @id @default(autoincrement())
+  name String @db.VarChar(100)
+  adress String @db.VarChar(100)
+  phone String @db.VarChar(12)
+  active Boolean
+  details String @db.VarChar(1000)
+}
+
+model UserType {
+  @@map(name: "userType")
+  id Int @id @default(autoincrement())
+  name String @db.VarChar(30)
+  donor Donor[]
+}
+
+model Donor {
+  @@map(name: "donor")
+  id Int @id @default(autoincrement())
+  name String @db.VarChar(100)
+  cpf String @db.VarChar(12)
+  email String @db.VarChar(100)
+  password String @db.VarChar(1000)
+  userTypeId Int
+  userType UserType @relation(fields: [userTypeId], references: [id], onDelete: Cascade, onUpdate: Cascade) 
+}
+
+// model Estado {
+//   id Int @id @default(autoincrement())
+//   nome String @db.VarChar(50)
+//   sigla String @db.VarChar(2)
+//   donatario Donatario[]
+// }
+
+// model Genero {
+//   id Int @id @default(autoincrement())
+//   nome String @db.VarChar(100)
+//   moradoresNoImovel MoradoresNoImovel[]
+//   donatario Donatario[]
+// }
+
+// model MoradoresNoImovel {
+//   id Int @id @default(autoincrement())
+//   nome String @db.VarChar(200)
+//   donatario Donatario[]
+//   generoId Int
+//   genero Genero @relation(fields: [generoId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+// }
+
+// model Donatario {
+//   id Int @id @default(autoincrement())
+//   nome String @db.VarChar(200)
+//   telefone Int
+//   celular Int
+//   endereco String @db.VarChar(300)
+//   numeroImovel String @db.VarChar(10)
+//   complemento String @db.VarChar(100)
+//   bairro String @db.VarChar(100)
+//   cidade String @db.VarChar(100)
+//   estadoId Int
+//   estado Estado @relation(fields: [estadoId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+//   cep Int 
+//   moradoresNoImovelId Int
+//   moradoresNoImovel MoradoresNoImovel @relation(fields: [moradoresNoImovelId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+//   generoId Int
+//   genero Genero @relation(fields: [generoId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+//   necessidades String @db.VarChar(1000)
+// }

@@ -1,16 +1,19 @@
 // import useStyles from 'react'
 import styled from "styled-components";
 import {
-  Link,
   Button,
   Container,
   Grid,
+  Link,
   TextField,
   Typography,
 } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import FormControl from "@mui/material/FormControl";
 import { Close } from "@mui/icons-material";
+import { mask, unMask } from 'remask'
+import { useState } from "react";
+import axios from 'axios'
 
 const Loginframe = styled.div`
   width: 100%;
@@ -30,7 +33,43 @@ const CloseStyle = styled.div`
   padding-bottom: 20px;
 `;
 
-export default function registration() {
+function granteeTempRegistration(props) {
+  const [name, setName] = useState('')
+  const [adress, setAdress] = useState('')
+  const [phone, setPhone] = useState('')
+  const [details, setDetails] = useState('')
+
+  
+  const handleNameChange = event => {
+    setName(event.target.value)
+  }
+  const handleAdressChange = event => {
+    setAdress(event.target.value)
+  }
+  const handlePhoneChange = event => {
+    setPhone(mask(unMask(event.target.value), ['(99) 99999 - 9999']))
+  }
+  const handleDetails = event => {
+    setDetails(event.target.value)
+  }
+
+  const createOpenedGrantee = async () => {
+    const granteeToCreate = {
+      name,
+      adress,
+      phone: unMask(phone),
+      details
+    }
+
+    const response = await axios.post('/api/grantee/createOpenedGrantee', granteeToCreate)
+
+    if(!response.data.success){
+      return console.log(response.data.message);//Colocar Modal avisando que já tem cadastro neste telefone.
+    }else {
+      return console.log(response.data.message);//Colocar Modal avisando que cadastro foi criado com sucesso.
+    }
+  }
+  
   return (
     <>
       <Loginframe>
@@ -62,37 +101,31 @@ export default function registration() {
                 <Grid container>
                   <Grid item xs={12} sm={12} md={12} justifyContent="center">
                     <SpacingBottom>
-                      <TextField label="Nome Completo" fullWidth></TextField>
+                      <TextField label="Nome Completo" fullWidth onChange={handleNameChange} value={name}></TextField>
                     </SpacingBottom>
                   </Grid>
                   <Grid item xs={12} sm={12} md={12} justifyContent="center">
                     <SpacingBottom>
-                      <TextField label="CPF" fullWidth></TextField>
+                      <TextField label="Endereço" fullWidth onChange={handleAdressChange} value={adress}></TextField>
                     </SpacingBottom>
                   </Grid>
                   <Grid item xs={12} sm={12} md={12} justifyContent="center">
                     <SpacingBottom>
-                      <TextField label="E-mail" fullWidth></TextField>
+                      <TextField label="Telefone" fullWidth onChange={handlePhoneChange} value={phone}></TextField>
                     </SpacingBottom>
                   </Grid>
-
                   <Grid container>
-                    <Grid item xs={12} sm={12} md={12} justifyContent="center">
+                    <Grid item xs={12} sm={12} md={12}>
                       <SpacingBottom>
                         <TextField
-                          label="Senha"
+                          id="outlined-multiline-static"
+                          label="Fale um pouco sobre você"
+                          multiline
+                          rows={4}
                           fullWidth
-                          type="password"
-                        ></TextField>
-                      </SpacingBottom>
-                    </Grid>
-                    <Grid item xs={12} sm={12} md={12} justifyContent="center">
-                      <SpacingBottom>
-                        <TextField
-                          label="Confirmar Senha"
-                          fullWidth
-                          type="password"
-                        ></TextField>
+                          onChange={handleDetails}
+                          value={details}
+                        />
                       </SpacingBottom>
                     </Grid>
                   </Grid>
@@ -104,6 +137,9 @@ export default function registration() {
                           variant="contained"
                           fullWidth
                           color="primary"
+                          multiline
+                          maxRows={4}
+                          onClick={createOpenedGrantee}
                         >
                           Cadastre-se
                         </Button>
@@ -120,3 +156,5 @@ export default function registration() {
     </>
   );
 }
+
+export default granteeTempRegistration
