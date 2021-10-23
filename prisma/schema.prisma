@@ -20,11 +20,32 @@ model OpenedGrantee {
   details String @db.VarChar(1000)
 }
 
+model Grantee {
+  @@map(name:"grantee")
+  id Int @id @default(autoincrement())
+  name String @db.VarChar(100)
+  adress String @db.VarChar(100)
+  adressNumber String @db.VarChar(30)
+  complement String? @db.VarChar(100) 
+  district String @db.VarChar(100) 
+  city String @db.VarChar(100) 
+  state String @db.VarChar(100)  
+  zipCode String @db.VarChar(10) 
+  phone String @db.VarChar(20) 
+  cellPhone String @db.VarChar(20)  
+  details String? @db.VarChar(1000)  
+  peopleOnHouse Int
+  mainNeeds String @db.VarChar(1000)
+  userTypeId Int
+  userTyper UserType @relation(fields: [userTypeId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+}
+
 model UserType {
   @@map(name: "userType")
   id Int @id @default(autoincrement())
   name String @db.VarChar(30)
   donor Donor[]
+  grantee Grantee[]
 }
 
 model Donor {
