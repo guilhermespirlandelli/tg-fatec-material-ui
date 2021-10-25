@@ -22,6 +22,12 @@ import {
 } from "@mui/material";
 import { DeleteForever } from "@mui/icons-material";
 import { resolveHref } from "next/dist/shared/lib/router/router";
+import DataGrid from "../../components/Datagrid";
+
+import Router from 'next/router'
+
+import defaultPrisma from '../../../prismaConfig'
+import { useState } from "react";
 
 const Title = styled.h1`
   font-size: 50px;
@@ -60,7 +66,34 @@ const pessoas = {
   id: [0, 1],
 };
 
-export default function receivePending() {
+export async function getServerSideProps(context){
+  const allOpenedGrantees = await defaultPrisma.openedGrantee.findMany({
+    where: {
+      active: true
+    }
+  })
+  const count = await defaultPrisma.openedGrantee.count()
+
+  return{
+    props: {
+      allOpenedGrantees: allOpenedGrantees,
+      count: count
+    }
+  }
+}
+
+function openedGrantees(props) {
+  const [openedGrantees, setOpenedGrantees] = useState(props.allOpenedGrantees)
+  const [count, setCount] = useState(props.count)
+  const [page, setPage] = useState(0)
+  const [rowsPerPage, setRowsPerPage] = useState(5)
+
+  
+  
+
+  const editGrantee = (id) => {
+    Router.push(`/grantee/${id}/createGrantee`)
+  }
   return (
     <>
       <Loginframe>
@@ -87,77 +120,27 @@ export default function receivePending() {
                     ></TextField>
                   </Grid>
                   <Grid item md={12} xs={12} sm={12} xl={12}>
-                    <TableContainer>
-                      <Table>
-                        <TableHead>
-                          <TableRow>
-                            <TableCell>Nome</TableCell>
-                            <TableCell align="right">Telefone</TableCell>                            
-                            <TableCell align="center">Excluir</TableCell>
-                          </TableRow>
-                        </TableHead>
-                        <TableBody>
+                    <DataGrid
+                      count={count}
+                      page={page}
+                      rowsPerPage={rowsPerPage}
+                      gridHeaders={[
+                        {
+                          field: "name",
+                          headerName: "Nome"
+                        },
+                        {
+                          field: "phone",
+                          headerName: "Telefone",
+                          align: "center"
+                        }
+                      ]}
+                      gridData={openedGrantees}
+                      // onPageChange={handlePageChange}
+                      // onRowsPerPageChange={handleRowsPerPage}
+                      onSelectedRow={editGrantee}
 
-                          <TableRow
-                            key={pessoas.id}
-                            hover
-                            onClick={() => {
-
-                              handleSelectedChips(index);
-                            }}
-                          >
-                            <TableCell>{pessoas.nome[0]}</TableCell>
-                            <TableCell align="right">
-                              <Typography variant="subtitle2">
-                                {pessoas.telefone[0]}
-                              </Typography>
-                            </TableCell>
-
-                            <TableCell align="center">
-                              <Link href="/#">
-                              <DeleteForever />
-                              </Link>
-                            </TableCell>
-                            {/* <TableCell align="center">
-                              <Typography variant="subtitle2">
-                                {pessoas.nome}
-                              </Typography>
-                            </TableCell> */}
-                          </TableRow>
-
-                          <TableRow
-                            key={pessoas.id}
-                            hover
-                            onClick={() => {
-                              handleSelectedChips();
-                            }}
-                          >
-                            <TableCell>{pessoas.nome[1]}</TableCell>
-                            <TableCell align="right">
-                              <Typography variant="subtitle2">
-                                {pessoas.telefone[1]}
-                              </Typography>
-                            </TableCell>
-
-                            <TableCell align="center">
-                              <Link href="#">
-                              <DeleteForever />
-                              </Link>
-                            </TableCell>
-                            {/* <TableCell align="center">
-                              <Typography variant="subtitle2">
-                                {pessoas.nome}
-                              </Typography>
-                            </TableCell> */}
-                          </TableRow>
-                        </TableBody>
-                        <TableFooter>
-                          <TableRow>
-                            {/* <TablePagination></TablePagination> */}
-                          </TableRow>
-                        </TableFooter>
-                      </Table>
-                    </TableContainer>
+                    />
                   </Grid>
                 </Grid>
               </Container>
@@ -168,3 +151,5 @@ export default function receivePending() {
     </>
   );
 }
+
+export default openedGrantees
