@@ -43,7 +43,7 @@ const Loginframe = styled.div`
   text-align: center;
 `;
 
-export default function formReceive() {
+export default function formDonationFood() {
   const [peopleNumber, setPeopleNumber] = useState("");
 
   const handleChange = (event) => {
@@ -60,7 +60,10 @@ export default function formReceive() {
               <Container>
                 <Grid container spacing={5}>
                   <Grid item md={12} xs={12} sm={12} xl={12}>
-                    <Typography variant="h4">Fazer Doação</Typography>
+                    <Typography variant="h4">Fazer Doação de Alimentos</Typography>
+                  </Grid>
+                  <Grid item md={12} xs={12} sm={12} xl={12}>
+                    <Typography align="left" variant="h5">Cesta Básica R$ 75,00 <br></br> (Arroz 5k, Feijão 2k, Açucar 5kg, Macarrão)</Typography>
                   </Grid>
 
                   
@@ -80,7 +83,7 @@ export default function formReceive() {
                             color="primary"
                             endIcon={<ArrowBack />}
                             fullWidth
-                            // onClick={backToJurisprudence}
+                            href="/DonationOptions"
                           >
                             Voltar
                           </Button>

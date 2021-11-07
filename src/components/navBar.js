@@ -150,7 +150,7 @@ export default function PersistentDrawerLeft() {
               <ListItemText primary="Cadastro de Donatários" />
             </ListItem>
           </a>
-          <a href="/receive" style={{ textDecoration: "none", color: "black" }}>
+          <a href="/grantee/granteeList" style={{ textDecoration: "none", color: "black" }}>
             <ListItem button key="Donatários">
               <ListItemIcon>
                 <ViewList />
@@ -159,7 +159,7 @@ export default function PersistentDrawerLeft() {
             </ListItem>
           </a>
           <a
-            href="/receivePending"
+            href="/grantee/openedGrantees"
             style={{ textDecoration: "none", color: "black" }}
           >
             <ListItem button key="Donatários Pendentes">
@@ -195,7 +195,7 @@ export default function PersistentDrawerLeft() {
             </ListItem>
           </a>
           <a
-            href="/formDonation"
+            href="/DonationOptions"
             style={{ textDecoration: "none", color: "black" }}
           >
             <ListItem button key="Fazer Doação">
