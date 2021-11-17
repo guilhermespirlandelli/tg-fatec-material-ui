@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Container, FormControl, Select } from "@mui/material";
 import styled from "styled-components";
@@ -9,6 +10,7 @@ import {
   Typography,
   InputLabel,
   MenuItem,
+  Avatar,
 } from "@mui/material";
 import { ArrowBack, Check, Close } from "@mui/icons-material";
 import PersistentDrawerLeft from "../components/navBar";
@@ -56,14 +58,54 @@ export default function formEditProfile() {
         <PersistentDrawerLeft />
         <SpacingBottom>
           <Container>
-            <Paper>
+            <Paper align="center">
               <Container>
                 <Grid container spacing={5}>
                   <Grid item md={12} xs={12} sm={12} xl={12}>
                     <Typography variant="h4">Editar Perfil</Typography>
                   </Grid>
+                  <Grid item md={12} xs={12} sm={12} xl={12}>
+                    <Avatar
+                      src="/broken-image.jpg"
+                      sx={{ width: 100, height: 100 }}
+                    />
 
-                  
+                  </Grid>
+
+                  <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                    <TextField label="Nome Completo" placeholder="" fullWidth />
+                  </Grid>
+
+                  <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+                    <TextField label="Telefone" fullWidth />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+                    <TextField label="Celular" fullWidth />
+                  </Grid>
+
+                  <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+                    <TextField label="Rua" fullWidth />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={2} lg={2} xl={2}>
+                    <TextField label="Número" fullWidth />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
+                    <TextField label="Complemento" fullWidth />
+                  </Grid>
+
+                  <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+                    <TextField label="Bairro" fullWidth />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+                    <TextField label="Cidade" fullWidth />
+                  </Grid>
+
+                  <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+                    <TextField label="Estado" fullWidth />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+                    <TextField label="CEP" fullWidth />
+                  </Grid>
 
                   <Grid item md={12} xs={12} sm={12} xl={12}>
                     <Grid
@@ -80,7 +122,7 @@ export default function formEditProfile() {
                             color="primary"
                             endIcon={<ArrowBack />}
                             fullWidth
-                            // onClick={backToJurisprudence}
+                          // onClick={backToJurisprudence}
                           >
                             Voltar
                           </Button>
@@ -93,7 +135,7 @@ export default function formEditProfile() {
                             color="primary"
                             endIcon={<Check />}
                             fullWidth
-                            // onClick={saveMessage}
+                          // onClick={saveMessage}
                           >
                             Salvar
                           </Button>

@@ -9,6 +9,7 @@ import {
   InputAdornment,
   Link,
 } from "@mui/material";
+import DataGrid from "../../components/Datagrid";
 import { Search } from "@mui/icons-material";
 import PersistentDrawerLeft from "../../components/navBar";
 import TableContainer from "@mui/material/TableContainer";
@@ -60,6 +61,7 @@ const pessoas = {
 };
 
 export default function receive() {
+
   return (
     <>
       <Loginframe>
@@ -86,76 +88,27 @@ export default function receive() {
                     ></TextField>
                   </Grid>
                   <Grid item md={12} xs={12} sm={12} xl={12}>
-                    <TableContainer>
-                      <Table>
-                        <TableHead>
-                          <TableRow>
-                            <TableCell align="left">Nome</TableCell>
-                            <TableCell align="center">Celular</TableCell>
-                            <TableCell align="center">Telefone</TableCell>
-                            
-                          </TableRow>
-                        </TableHead>
-                        <TableBody>
-                          
-                            <TableRow
-                              key={pessoas.id}
-                              hover
-                              onClick={() => {
-                                
-                                handleSelectedChips(index);
-                              }}
-                            >
-                              <TableCell align="left">{pessoas.nome[0]}</TableCell>
-                              <TableCell align="center">
-                                <Typography variant="subtitle2">
-                                  {pessoas.celular[0]}
-                                </Typography>
-                              </TableCell>
-                              <TableCell align="center">
-                                <Typography variant="subtitle2">
-                                  {pessoas.telefone[0]}
-                                </Typography>
-                              </TableCell>
-                              {/* <TableCell align="center">
-                              <Typography variant="subtitle2">
-                                {pessoas.nome}
-                              </Typography>
-                            </TableCell> */}
-                            </TableRow>
-                          
-                          <TableRow
-                            key={pessoas.id}
-                            hover
-                            onClick={() => {
-                              handleSelectedChips();
-                            }}
-                          >
-                            <TableCell>{pessoas.nome[1]}</TableCell>
-                            <TableCell align="center">
-                              <Typography variant="subtitle2">
-                                {pessoas.celular[1]}
-                              </Typography>
-                            </TableCell>
-                            <TableCell align="center">
-                              <Typography variant="subtitle2">
-                                {pessoas.telefone[1]}
-                              </Typography>
-                            </TableCell>
-                            {/* <TableCell align="center">
-                              <Typography variant="subtitle2">
-                                {pessoas.nome}
-                              </Typography>
-                            </TableCell> */}
-                          </TableRow>
-                        </TableBody>
-                        <TableFooter>
-                          <TableRow>
-                            {/* <TablePagination></TablePagination> */}
-                          </TableRow>
-                        </TableFooter>
-                      </Table>
-                    </TableContainer>
+                    <DataGrid
+                      count={5}
+                      page={1}
+                      rowsPerPage={5}
+                      gridHeaders={[
+                        {
+                          field: "name",
+                          headerName: "Nome"
+                        },
+                        {
+                          field: "phone",
+                          headerName: "Telefone",
+                          align: "center"
+                        }
+                      ]}
+                      // gridData={openedGrantees}
+                      // onPageChange={handlePageChange}
+                      // onRowsPerPageChange={handleRowsPerPage}
+                      // onSelectedRow={editGrantee}
+
+                    />
                   </Grid>
                 </Grid>
               </Container>

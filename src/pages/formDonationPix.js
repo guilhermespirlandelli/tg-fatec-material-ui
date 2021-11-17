@@ -42,6 +42,11 @@ const Loginframe = styled.div`
   align-items: center;
   text-align: center;
 `;
+const Imagem1 = styled.img`  
+border-radius: 1%;
+height: 250px;
+width: 250px;
+`;
 
 export default function formDonationPix() {
   const [peopleNumber, setPeopleNumber] = useState("");
@@ -63,10 +68,16 @@ export default function formDonationPix() {
                     <Typography variant="h4">Fazer Transferência Pix</Typography>
                   </Grid>
                   <Grid item md={12} xs={12} sm={12} xl={12}>
-                    <Typography align="left" variant="h5"></Typography>
+                    <Typography align="center" variant="h5">Você pode doar qualquer valor usando a CHAVE PIX CELULAR: </Typography>
+                    <Typography align="center" variant="h5"> 16988014105 </Typography>
+                  </Grid>
+                  <Grid item md={12} xs={12} sm={12} xl={12}>
+                    <Typography align="center" variant="h5">Ou aponte o seu celular para QRCODE abaixo:</Typography>
+                  </Grid>
+                  <Grid item md={12} xs={12} sm={12} xl={12}>
+                    <Imagem1 alt="logo" src="/qrcode.png" />
                   </Grid>
 
-                  
 
                   <Grid item md={12} xs={12} sm={12} xl={12}>
                     <Grid
@@ -96,7 +107,7 @@ export default function formDonationPix() {
                             color="primary"
                             endIcon={<Check />}
                             fullWidth
-                            // onClick={saveMessage}
+                          // onClick={saveMessage}
                           >
                             Salvar
                           </Button>
