@@ -56,7 +56,7 @@ export default function authentication() {
                 <Grid container>
                   <Grid item xs={12} sm={12} md={12} justifyContent="center">
                     <SpacingBottom>
-                      <TextField label="Usuário" fullWidth></TextField>
+                      <TextField label="CPF" fullWidth></TextField>
                     </SpacingBottom>
                   </Grid>
                   <Grid container>
@@ -77,6 +77,7 @@ export default function authentication() {
                         variant="contained"
                         fullWidth
                         color="primary"
+                        href="/"
                       >
                         Login
                       </Button>

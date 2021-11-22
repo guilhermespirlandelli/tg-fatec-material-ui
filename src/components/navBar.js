@@ -24,6 +24,7 @@ import {
   AccountCircle,
   Redeem,
   Logout,
+  FavoriteBorder,
 } from "@mui/icons-material";
 import Link from "@mui/material";
 const drawerWidth = 240;
@@ -167,6 +168,17 @@ export default function PersistentDrawerLeft() {
                 <PendingActions />
               </ListItemIcon>
               <ListItemText primary="Donatários Pendentes" />
+            </ListItem>
+          </a>
+          <a
+            href="/openedDonor"
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <ListItem button key="Doações Pendentes">
+              <ListItemIcon>
+                <FavoriteBorder />
+              </ListItemIcon>
+              <ListItemText primary="Doações Pendentes" />
             </ListItem>
           </a>
           <a

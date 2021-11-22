@@ -64,16 +64,22 @@ export default function formEditProfile() {
                   <Grid item md={12} xs={12} sm={12} xl={12}>
                     <Typography variant="h4">Editar Perfil</Typography>
                   </Grid>
-                  <Grid item md={12} xs={12} sm={12} xl={12}>
+                  <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                    <Typography align="left" variant="h5">Dados Pessoais</Typography>
+                  </Grid>
+                  {/* <Grid item md={12} xs={12} sm={12} xl={12}>
                     <Avatar
                       src="/broken-image.jpg"
                       sx={{ width: 100, height: 100 }}
                     />
 
-                  </Grid>
+                  </Grid> */}
 
-                  <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
                     <TextField label="Nome Completo" placeholder="" fullWidth />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+                    <TextField label="E-mail" placeholder="" fullWidth />
                   </Grid>
 
                   <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
@@ -106,7 +112,34 @@ export default function formEditProfile() {
                   <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
                     <TextField label="CEP" fullWidth />
                   </Grid>
+                  <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                    <Typography align="left" variant="h5">Dados de Segurança</Typography>
+                  </Grid>
 
+                  
+                    <Grid item xs={6} sm={6} md={6} justifyContent="center">
+                      
+                        <TextField
+                          label="Nova Senha"
+                          fullWidth
+                          type="password"
+                          // value={password}
+                          // onChange={handlePasswordChange}
+                        ></TextField>
+                      
+                    </Grid>
+                    <Grid item xs={6} sm={6} md={6} justifyContent="center">
+                      
+                        <TextField
+                          label="Confirmar Senha"
+                          fullWidth
+                          type="password"
+                          // value={confirmedPassword}
+                          // onChange={handleConfirmedPasswordChange}
+                        ></TextField>
+                      
+                    </Grid>
+                  
                   <Grid item md={12} xs={12} sm={12} xl={12}>
                     <Grid
                       container

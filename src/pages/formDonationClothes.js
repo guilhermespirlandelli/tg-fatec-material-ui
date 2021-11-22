@@ -62,9 +62,27 @@ export default function formDonationClothes() {
                   <Grid item md={12} xs={12} sm={12} xl={12}>
                     <Typography variant="h4">Fazer Doação de Roupas</Typography>
                   </Grid>
-                  <Grid item md={12} xs={12} sm={12} xl={12}>
-                    <Typography align="left" variant="h5"></Typography>
+                  <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                    <Typography align="left" variant="h5">Para que sua doação possa chegar a alguém que precise com mais velocidade, pedimos por favor que descreva as peças doadas como o exemplo abaixo.</Typography>
                   </Grid>
+                  <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                    <Typography align="left" variant="h6">Exemplo: <br /> Roupas de Cama. 1 Lençol solteiro, 2 Cobertores casal <br /> Roupas Infantis. 5 Peças Femininas, 2 Peças Masculinas <br /> Roupas Adultas. 1 Peça Feminina, 3 Peças Masculinas <br />  </Typography>
+                  </Grid>
+
+
+                  <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                      
+                        <TextField
+                          // id="outlined-multiline-static"
+                          label="Descrição da doação de roupas"
+                          multiline
+                          rows={4}
+                          fullWidth
+                          // onChange={handleDetails}
+                          // value={details}
+                        />
+                      
+                    </Grid>
 
                   
 

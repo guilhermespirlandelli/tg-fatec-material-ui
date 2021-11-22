@@ -37,7 +37,7 @@ const Wrapper = styled.div`
 `;
 const Loginframe = styled.div`
   width: 100%;
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   align-items: center;
   text-align: center;
@@ -62,11 +62,37 @@ export default function formDonationFood() {
                   <Grid item md={12} xs={12} sm={12} xl={12}>
                     <Typography variant="h4">Fazer Doação de Alimentos</Typography>
                   </Grid>
-                  <Grid item md={12} xs={12} sm={12} xl={12}>
-                    <Typography align="left" variant="h5">Cesta Básica R$ 75,00 <br></br> (Arroz 5k, Feijão 2k, Açucar 5kg, Macarrão)</Typography>
+                  <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                    <Typography align="left" variant="h5">Cesta Básica R$ 75,00 <br></br> (Arroz 5k, Feijão 2k, Açucar 5kg, 1Kg Sal, 1 Macarrão, 2 Molhos de tomate, 2 Litros de óleo, 1 Fubá mimoso, 1 Caldo de galinha)</Typography>
                   </Grid>
 
                   
+                    <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
+                      <Typography align="right" variant="h6">Deseja doar quantas Cestas Básicas?</Typography>
+                    </Grid>
+                    
+                    <Grid item xs={2} sm={2} md={2} lg={2} xl={2}>
+                      <TextField align="left" size="small" type="number"></TextField>
+                    </Grid>
+
+                    <Grid item xs={3} sm={3} md={2} lg={2} xl={2}>
+                      <Button
+                        // align="right"
+                        variant="contained"
+                        color="primary"
+                      // endIcon={<ArrowBack />}
+                      // fullWidth
+
+                      >
+                        CONFIRMAR
+                      </Button>
+                    </Grid>
+                    <Grid item xs={0} sm={0} md={1} lg={1} xl={1} />
+                  
+
+                  <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                    <Typography align="left" variant="h5">Para confirmar sua doação de XX Cestas Básicas clique em "SALVAR".</Typography>
+                  </Grid>
 
                   <Grid item md={12} xs={12} sm={12} xl={12}>
                     <Grid
@@ -96,7 +122,7 @@ export default function formDonationFood() {
                             color="primary"
                             endIcon={<Check />}
                             fullWidth
-                            // onClick={saveMessage}
+                          // onClick={saveMessage}
                           >
                             Salvar
                           </Button>
